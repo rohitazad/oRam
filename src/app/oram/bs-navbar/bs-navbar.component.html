@@ -13,14 +13,17 @@
         <a class="nav-link" [routerLink]="['login']">Login</a>
       </li>
       <li class="nav-item dropdown" ngbDropdown>
-        <a class="nav-link dropdown-toggle noneLink" ngbDropdownToggle  id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User Name</a>
+        <a class="nav-link dropdown-toggle noneLink" ngbDropdownToggle  id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          ==== user name ====
+        </a>
         <div class="dropdown-menu" aria-labelledby="dropdown01" ngbDropdownMenu >
           <a class="dropdown-item" [routerLink]="['my/orders']">My Orders</a>
           <a class="dropdown-item" [routerLink]="['admin/orders']">Manage Orders</a>
           <a class="dropdown-item" [routerLink]="['admin/products']">Manage Products</a>
-          <a class="dropdown-item log-out" >Log Out</a>
+          <a class="dropdown-item log-out" (click)="logOut()">Log Out</a>
         </div>
       </li>
+     
     </ul>
   </div>
 </nav>

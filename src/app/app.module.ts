@@ -23,6 +23,9 @@ import { LoginComponent } from './oram/login/login.component';
 import { BsNavbarComponent } from './oram/bs-navbar/bs-navbar.component';
 import { Error404Component } from './oram/error-404/error-404.component';
 
+
+import { AuthService } from './oram/service/auth-service.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +61,9 @@ import { Error404Component } from './oram/error-404/error-404.component';
       { path:'**', component:Error404Component }
     ])
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
