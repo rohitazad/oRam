@@ -25,6 +25,7 @@ import { Error404Component } from './oram/error-404/error-404.component';
 
 
 import { AuthService } from './oram/service/auth-service.service';
+import { AuthGuard } from './oram/service/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import { AuthService } from './oram/service/auth-service.service';
       { path:'', component:HomeComponent },
       { path:'products', component:ProductsComponent },
       { path:'shopping-cart', component:ShoppingCartComponent },
-      { path:'check-out', component:CheckOutComponent },
+      { path:'check-out', component:CheckOutComponent , canActivate:[AuthGuard]},
       { path:'order-success', component:OrderSuccessComponent },
       { path:'my/orders', component:MyOrdersComponent },
       { path:'login', component:LoginComponent },
@@ -62,7 +63,8 @@ import { AuthService } from './oram/service/auth-service.service';
     ])
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
