@@ -26,6 +26,8 @@ import { Error404Component } from './oram/error-404/error-404.component';
 
 import { AuthService } from './oram/service/auth-service.service';
 import { AuthGuard } from './oram/service/auth-guard.service';
+import { UserService } from './oram/service/user.service';
+import { AdminAuthGuard } from './oram/service/admin-auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -52,19 +54,23 @@ import { AuthGuard } from './oram/service/auth-guard.service';
       { path:'', component:HomeComponent },
       { path:'products', component:ProductsComponent },
       { path:'shopping-cart', component:ShoppingCartComponent },
-      { path:'check-out', component:CheckOutComponent , canActivate:[AuthGuard]},
-      { path:'order-success', component:OrderSuccessComponent },
-      { path:'my/orders', component:MyOrdersComponent },
       { path:'login', component:LoginComponent },
-      { path:'admin/products', component:AdminProductsComponent },
-      { path:'admin/orders', component:AdminOrdersComponent },
 
-      { path:'**', component:Error404Component }
+      { path:'check-out', component:CheckOutComponent , canActivate:[AuthGuard]},
+      { path:'order-success', component:OrderSuccessComponent , canActivate:[AuthGuard] },
+      { path:'my/orders', component:MyOrdersComponent  , canActivate:[AuthGuard]},
+
+      { path:'admin/products', component:AdminProductsComponent , canActivate:[AuthGuard, AdminAuthGuard]},
+      { path:'admin/orders', component:AdminOrdersComponent , canActivate:[AuthGuard, AdminAuthGuard]},
+
+     // { path:'**', component:Error404Component }
     ])
   ],
   providers: [
     AuthService,
-    AuthGuard
+    AuthGuard,
+    UserService, // store user for firebase db
+    AdminAuthGuard // admin auth guard service here
   ],
   bootstrap: [AppComponent]
 })

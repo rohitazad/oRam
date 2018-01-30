@@ -15,14 +15,16 @@
         </li>
       </ng-template>
       
-      <li class="nav-item dropdown" ngbDropdown *ngIf="_authService.user$ | async as user; else anonymousUser">
+      <li class="nav-item dropdown" ngbDropdown *ngIf="appUser; else anonymousUser">
         <a class="nav-link dropdown-toggle noneLink" ngbDropdownToggle  id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{user.displayName}}
+          {{appUser.name}}
         </a>
         <div class="dropdown-menu" aria-labelledby="dropdown01" ngbDropdownMenu >
           <a class="dropdown-item" [routerLink]="['my/orders']">My Orders</a>
-          <a class="dropdown-item" [routerLink]="['admin/orders']">Manage Orders</a>
-          <a class="dropdown-item" [routerLink]="['admin/products']">Manage Products</a>
+
+          <a *ngIf="appUser.isAdmin" class="dropdown-item" [routerLink]="['admin/orders']">Manage Orders</a>
+          <a *ngIf="appUser.isAdmin" class="dropdown-item" [routerLink]="['admin/products']">Manage Products</a>
+
           <a class="dropdown-item log-out" (click)="logOut()">Log Out</a>
         </div>
       </li>
