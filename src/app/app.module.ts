@@ -28,7 +28,11 @@ import { AuthService } from './oram/service/auth-service.service';
 import { AuthGuard } from './oram/service/auth-guard.service';
 import { UserService } from './oram/service/user.service';
 import { AdminAuthGuard } from './oram/service/admin-auth-guard.service';
-
+import { AdminProductFormComponent } from './oram/admin/product-form/product-form.component';
+import { CategoryService } from './oram/service/category.service';
+import { FormsModule } from '@angular/forms';
+import { ProductService } from './oram/service/product.service';
+import { CustomFormsModule } from 'ng2-validation';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,10 +46,13 @@ import { AdminAuthGuard } from './oram/service/admin-auth-guard.service';
     AdminOrdersComponent,
     LoginComponent,
     BsNavbarComponent,
-    Error404Component
+    Error404Component,
+    AdminProductFormComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    CustomFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
@@ -60,8 +67,27 @@ import { AdminAuthGuard } from './oram/service/admin-auth-guard.service';
       { path:'order-success', component:OrderSuccessComponent , canActivate:[AuthGuard] },
       { path:'my/orders', component:MyOrdersComponent  , canActivate:[AuthGuard]},
 
-      { path:'admin/products', component:AdminProductsComponent , canActivate:[AuthGuard, AdminAuthGuard]},
-      { path:'admin/orders', component:AdminOrdersComponent , canActivate:[AuthGuard, AdminAuthGuard]},
+      
+      { 
+        path:'admin/products/new', 
+        component:AdminProductFormComponent , 
+        canActivate:[AuthGuard, AdminAuthGuard]
+      },
+      { 
+        path:'admin/products/:id', 
+        component:AdminProductFormComponent , 
+        canActivate:[AuthGuard, AdminAuthGuard]
+      },
+      { 
+        path:'admin/products', 
+        component:AdminProductsComponent , 
+        canActivate:[AuthGuard, AdminAuthGuard]
+      },
+      { 
+        path:'admin/orders', 
+        component:AdminOrdersComponent , 
+        canActivate:[AuthGuard, AdminAuthGuard]
+      },
 
      // { path:'**', component:Error404Component }
     ])
@@ -70,7 +96,9 @@ import { AdminAuthGuard } from './oram/service/admin-auth-guard.service';
     AuthService,
     AuthGuard,
     UserService, // store user for firebase db
-    AdminAuthGuard // admin auth guard service here
+    AdminAuthGuard, // admin auth guard service here
+    CategoryService, // for category get to data base 
+    ProductService // product service data save upadate remove
   ],
   bootstrap: [AppComponent]
 })
