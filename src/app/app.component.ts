@@ -19,14 +19,18 @@ export class AppComponent {
 
     _authService.user$.subscribe(
       usr => {
-        if(usr){
+        if(!usr) return;
 
-          // store user to firebase 
-          _userService.save(usr);
-
+        
+          _userService.save(usr);          
           let returnUrl = localStorage.getItem('returnUrl');
-          router.navigateByUrl(returnUrl);
-        }
+          
+          if(!returnUrl) return;
+
+            localStorage.removeItem('returnUrl');
+            router.navigateByUrl(returnUrl);
+         
+       
       })
 
   }

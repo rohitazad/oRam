@@ -19,7 +19,7 @@ export class AdminProductFormComponent implements OnInit {
     private _route : ActivatedRoute,
     private _cateSer:CategoryService, 
     private _productService:ProductService) { 
-    this.category$ = this._cateSer.getCategory();
+    this.category$ = this._cateSer.getAllCategory();
     this.id = this._route.snapshot.paramMap.get('id');
     if(this.id){
       this._productService.getProduct(this.id).take(1).subscribe(p=> this.product = p)

@@ -22,7 +22,7 @@ import { AdminOrdersComponent } from './oram/admin/admin-orders/admin-orders.com
 import { LoginComponent } from './oram/login/login.component';
 import { BsNavbarComponent } from './oram/bs-navbar/bs-navbar.component';
 import { Error404Component } from './oram/error-404/error-404.component';
-
+//import { DataTableModule } from 'angular-2-data-table';
 
 import { AuthService } from './oram/service/auth-service.service';
 import { AuthGuard } from './oram/service/auth-guard.service';
@@ -33,6 +33,8 @@ import { CategoryService } from './oram/service/category.service';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from './oram/service/product.service';
 import { CustomFormsModule } from 'ng2-validation';
+import { ProductFilterComponent } from './oram/products/product-filter/product-filter.component';
+import { ProductCartComponent } from './oram/product-cart/product-cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,18 +49,21 @@ import { CustomFormsModule } from 'ng2-validation';
     LoginComponent,
     BsNavbarComponent,
     Error404Component,
-    AdminProductFormComponent
+    AdminProductFormComponent,
+    ProductFilterComponent,
+    ProductCartComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     CustomFormsModule,
+    //DataTableModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
-      { path:'', component:HomeComponent },
+      { path:'', component:ProductsComponent },
       { path:'products', component:ProductsComponent },
       { path:'shopping-cart', component:ShoppingCartComponent },
       { path:'login', component:LoginComponent },
