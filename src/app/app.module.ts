@@ -35,6 +35,7 @@ import { ProductService } from './oram/service/product.service';
 import { CustomFormsModule } from 'ng2-validation';
 import { ProductFilterComponent } from './oram/products/product-filter/product-filter.component';
 import { ProductCartComponent } from './oram/product-cart/product-cart.component';
+import { ShoppingCartService } from './oram/service/shopping-cart.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -103,7 +104,8 @@ import { ProductCartComponent } from './oram/product-cart/product-cart.component
     UserService, // store user for firebase db
     AdminAuthGuard, // admin auth guard service here
     CategoryService, // for category get to data base 
-    ProductService // product service data save upadate remove
+    ProductService, // product service data save upadate remove
+    ShoppingCartService // shoppingCartService add to card or remove 
   ],
   bootstrap: [AppComponent]
 })
