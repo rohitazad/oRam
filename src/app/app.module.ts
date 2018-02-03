@@ -36,6 +36,7 @@ import { CustomFormsModule } from 'ng2-validation';
 import { ProductFilterComponent } from './oram/products/product-filter/product-filter.component';
 import { ProductCartComponent } from './oram/product-cart/product-cart.component';
 import { ShoppingCartService } from './oram/service/shopping-cart.service';
+import { ProductQunatityComponent } from './oram/product-qunatity/product-qunatity.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +53,8 @@ import { ShoppingCartService } from './oram/service/shopping-cart.service';
     Error404Component,
     AdminProductFormComponent,
     ProductFilterComponent,
-    ProductCartComponent
+    ProductCartComponent,
+    ProductQunatityComponent
   ],
   imports: [
     BrowserModule,
