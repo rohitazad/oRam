@@ -37,6 +37,7 @@ import { ProductFilterComponent } from './oram/products/product-filter/product-f
 import { ProductCartComponent } from './oram/product-cart/product-cart.component';
 import { ShoppingCartService } from './oram/service/shopping-cart.service';
 import { ProductQunatityComponent } from './oram/product-qunatity/product-qunatity.component';
+import { OrderService } from './oram/service/order.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +73,7 @@ import { ProductQunatityComponent } from './oram/product-qunatity/product-qunati
       { path:'login', component:LoginComponent },
 
       { path:'check-out', component:CheckOutComponent , canActivate:[AuthGuard]},
-      { path:'order-success', component:OrderSuccessComponent , canActivate:[AuthGuard] },
+      { path:'order-success/:id', component:OrderSuccessComponent , canActivate:[AuthGuard] },
       { path:'my/orders', component:MyOrdersComponent  , canActivate:[AuthGuard]},
 
       
@@ -107,7 +108,8 @@ import { ProductQunatityComponent } from './oram/product-qunatity/product-qunati
     AdminAuthGuard, // admin auth guard service here
     CategoryService, // for category get to data base 
     ProductService, // product service data save upadate remove
-    ShoppingCartService // shoppingCartService add to card or remove 
+    ShoppingCartService, // shoppingCartService add to card or remove 
+    OrderService
   ],
   bootstrap: [AppComponent]
 })
