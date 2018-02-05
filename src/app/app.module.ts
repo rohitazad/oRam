@@ -38,6 +38,8 @@ import { ProductCartComponent } from './oram/product-cart/product-cart.component
 import { ShoppingCartService } from './oram/service/shopping-cart.service';
 import { ProductQunatityComponent } from './oram/product-qunatity/product-qunatity.component';
 import { OrderService } from './oram/service/order.service';
+import { ShoppingCartSummaryComponent } from './oram/shopping-cart-summary/shopping-cart-summary.component';
+import { ShippingFormComponent } from './oram/shipping-form/shipping-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +57,9 @@ import { OrderService } from './oram/service/order.service';
     AdminProductFormComponent,
     ProductFilterComponent,
     ProductCartComponent,
-    ProductQunatityComponent
+    ProductQunatityComponent,
+    ShoppingCartSummaryComponent,
+    ShippingFormComponent
   ],
   imports: [
     BrowserModule,

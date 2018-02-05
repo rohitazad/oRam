@@ -1,3 +1,16 @@
-<p>
-  my-orders works!
-</p>
+<h2>My Orders</h2>
+
+<table class="table">
+  <thead>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Action</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let userData of userData">
+      <td>{{userData.shopping.name}}</td>
+      <td>{{userData.datePlaced |  date}}</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>

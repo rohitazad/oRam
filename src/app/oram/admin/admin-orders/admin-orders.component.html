@@ -1,3 +1,18 @@
-<p>
-  admin-orders works!
-</p>
+<h2>All user   Orders</h2>
+
+<table class="table" *ngIf="userData">
+  <thead>
+    <th>Name</th>
+    <th>Date</th>
+    <th>User ID</th>
+    <th>Action</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let userData of userData">
+      <td>{{userData.shopping.name}}</td>
+      <td>{{userData.datePlaced |  date}}</td>
+      <td>{{userData.userId}}</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
