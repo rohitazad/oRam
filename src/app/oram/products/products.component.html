@@ -6,7 +6,7 @@
     
   </div>
   <div class="col-md-9">
-    <div class="row">
+    <div class="row" *ngIf="cart$ | async as cart">
     <ng-container *ngFor="let p of filterProducts; let i = index"> 
       <div class="col">
         <product-cart [product]="p" [shopping-cart]="cart"></product-cart>
